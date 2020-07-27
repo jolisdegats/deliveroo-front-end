@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
+import Logo from "./components/Logo";
+import ReastaurantHeader from "./components/ReastaurantHeader";
+import UserOrder from "./components/UserOrder";
+import Footer from "./components/Footer";
 
 function App() {
-  return (
+  // console.log("Refreshing");
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchData = async () => {
+    const response = await axios("http://localhost:3001/");
+    setData(response.data);
+    setIsLoading(false);
+    // console.log(response.data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // use;
+
+  return isLoading ? (
+    <span>En cours de chargement...</span>
+  ) : (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Logo></Logo>
+      <ReastaurantHeader data={data}></ReastaurantHeader>
+      <UserOrder data={data} isLoading={isLoading}></UserOrder>
+      <Footer></Footer>
     </div>
   );
 }
