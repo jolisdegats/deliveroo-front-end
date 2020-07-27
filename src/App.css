@@ -266,13 +266,6 @@ footer a {
   .menuItemDesc {
     margin: 0 20px 0 0;
   }
-
-  .orderForm {
-    position: fixed;
-    top: 0;
-    right: 20px;
-    margin-left: -20px;
-  }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
