@@ -105,7 +105,7 @@ img {
 .menuItem {
   flex: 0 1 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   background-color: white;
   margin: 0px 0px 20px 0px;
   padding: 20px;
@@ -113,7 +113,7 @@ img {
   cursor: pointer;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  min-height: 160px;
+  min-height: 120px;
 }
 
 .menuItem:hover {
@@ -131,7 +131,7 @@ img {
 .menuItemDesc {
   flex: 1 0 50%;
 
-  margin: 0 0 20px 0;
+  margin: 0 20px 0px 0;
 }
 
 .menuItemDesc p {
