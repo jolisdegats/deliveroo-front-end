@@ -11,7 +11,7 @@ const numeral = require("numeral");
 numeral.register("locale", "fr", {
   delimiters: {
     thousands: " ",
-    decimal: ",",
+    decimal: ".",
   },
   abbreviations: {
     thousand: "k",

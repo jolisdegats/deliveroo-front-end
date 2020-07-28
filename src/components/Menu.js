@@ -24,17 +24,12 @@ const Menu = ({ data, isLoading, cart, setCart }) => {
   // Add items to cart function
   const addToCart = (id, quantity, title, price) => {
     let newCart = [...cart];
-    if (newCart.length === 0) {
+    const cartItem = newCart.find((element) => element.id === id);
+    if (!cartItem) {
       newCart.push({ id, quantity, title, price });
     } else {
-      const cartItem = newCart.find((element) => element.id === id);
-      if (!cartItem) {
-        newCart.push({ id, quantity, title, price });
-      } else {
-        cartItem.quantity = cartItem.quantity + 1;
-      }
+      cartItem.quantity = cartItem.quantity + 1;
     }
-
     return setCart(newCart);
   };
 
