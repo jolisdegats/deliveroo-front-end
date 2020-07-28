@@ -16,12 +16,7 @@ const UserOrder = ({ data, isLoading }) => {
             cart={cart}
             setCart={setCart}
           ></Menu>
-          <Cart
-            data={data}
-            isLoading={isLoading}
-            cart={cart}
-            setCart={setCart}
-          ></Cart>
+          <Cart cart={cart} setCart={setCart}></Cart>
         </div>
       </div>
     </div>

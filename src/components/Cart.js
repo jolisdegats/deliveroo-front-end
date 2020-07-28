@@ -2,7 +2,7 @@ import React from "react";
 import OrderItem from "./OrderItem";
 const numeral = require("numeral");
 
-const Cart = ({ data, isLoading, cart, setCart }) => {
+const Cart = ({ cart, setCart }) => {
   let subtotalPrice = 0;
   let totalPrice = 0;
   const deliveryCost = 2.5;
