@@ -5,9 +5,30 @@ import Logo from "./components/Logo";
 import ReastaurantHeader from "./components/ReastaurantHeader";
 import UserOrder from "./components/UserOrder";
 import Footer from "./components/Footer";
+const numeral = require("numeral");
+
+// Numeral JS
+numeral.register("locale", "fr", {
+  delimiters: {
+    thousands: " ",
+    decimal: ",",
+  },
+  abbreviations: {
+    thousand: "k",
+    million: "m",
+    billion: "b",
+    trillion: "t",
+  },
+  ordinal: function (number) {
+    return number === 1 ? "er" : "ème";
+  },
+  currency: {
+    symbol: "€",
+  },
+});
+numeral.locale("fr");
 
 function App() {
-  // console.log("Refreshing");
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,14 +38,11 @@ function App() {
     );
     setData(response.data);
     setIsLoading(false);
-    // console.log(response.data);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
-
-  // use;
 
   return isLoading ? (
     <span>En cours de chargement...</span>

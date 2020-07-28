@@ -1,6 +1,7 @@
 import React from "react";
+import starFilled from "../img/star-fill.svg";
 
-const Menu = ({ data, isLoading }) => {
+const Menu = ({ data, isLoading, cart, setCart }) => {
   //   Cut description
   const cutDesc = (str, img) => {
     let nbChar = 0;
@@ -9,8 +10,7 @@ const Menu = ({ data, isLoading }) => {
     } else {
       nbChar = 100;
     }
-
-    var trimmedString = str.substr(0, nbChar);
+    let trimmedString = str.substr(0, nbChar);
 
     if (str.length > trimmedString.length) {
       trimmedString = trimmedString.substr(
@@ -18,8 +18,24 @@ const Menu = ({ data, isLoading }) => {
         Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))
       );
     }
-
     return trimmedString;
+  };
+
+  // Add items to cart function
+  const addToCart = (id, quantity, title, price) => {
+    let newCart = [...cart];
+    if (newCart.length === 0) {
+      newCart.push({ id, quantity, title, price });
+    } else {
+      const cartItem = newCart.find((element) => element.id === id);
+      if (!cartItem) {
+        newCart.push({ id, quantity, title, price });
+      } else {
+        cartItem.quantity = cartItem.quantity + 1;
+      }
+    }
+
+    return setCart(newCart);
   };
 
   return isLoading ? (
@@ -34,9 +50,14 @@ const Menu = ({ data, isLoading }) => {
             <h2>{elem.name}</h2>
             <div className="allItemsPerCat">
               {elem.meals.map((item, id) => {
-                // console.log(item);
                 return (
-                  <div key={id} className="menuItem">
+                  <div
+                    key={id}
+                    className="menuItem"
+                    onClick={() =>
+                      addToCart(item.id, 1, item.title, item.price)
+                    }
+                  >
                     <div className="menuItemDesc">
                       <h3>{item.title}</h3>
 
@@ -44,8 +65,17 @@ const Menu = ({ data, isLoading }) => {
                       <div className="pricePopular">
                         <div>
                           <span className="itemPrice">{item.price} €</span>
+                          {item.popular ? (
+                            <img
+                              src={starFilled}
+                              alt=""
+                              className="itemPopular starIcon"
+                            ></img>
+                          ) : (
+                            ""
+                          )}
                           <span className="itemPopular">
-                            {item.popular ? "★ Populaire" : ""}
+                            {item.popular ? " Populaire" : ""}
                           </span>
                         </div>
                       </div>
