@@ -1,11 +1,11 @@
 <p align="center">
 <a href="https://deliveroo-jolisdegats.netlify.app/ ">
-  <img src="https://res.cloudinary.com/dqp905mfv/image/upload/v1601697412/portfolio/ReadMe/deliveroo_dr5aoy.jpg" alt ="Echoes MVP- Banner"  />
+  <img src="https://res.cloudinary.com/dqp905mfv/image/upload/v1601697412/portfolio/ReadMe/deliveroo_dr5aoy.jpg" alt ="Deliveroo- Banner"  />
   </a>
 </p>
 <br/>
 <br/>
-<h1>Echoes MVP project (React/Node)</h1>
+<h1>Panier Deliveroo (React/Node)</h1>
 <br/>
 <h3>COMING SOON...</h3>
 
